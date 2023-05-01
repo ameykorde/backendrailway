@@ -3,13 +3,14 @@ import Teacher from '../model/teachers.mjs';
 // Get all teachers
 const getTeacher = async (req, res) => {
   try {
-    const data = await Teacher.find();
+    const data = await Teacher.find().collation({locale: "en", strength: 1}).sort({ name: 1 }); //collation is used to sort case sensitive data
     res.send(data);
   } catch (error) {
     console.log(error);
     res.status(500).send({ message: 'Failed to fetch teachers!' });
   }
 };
+
 
 // Create a new teacher
 const postTeacher = async (req, res) => {
