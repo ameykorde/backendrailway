@@ -27,6 +27,8 @@ const createAbsentTeacher = async (req, res) => {
 // Get all absent teachers
 const getAbsentTeacher = async (req, res) => {
     try {
+        moment.tz.setDefault('Asia/Kolkata');  //setting default timezone to Indian Timezone
+
         // Get the current date and time
         const currentDate = moment().startOf('day');
         
