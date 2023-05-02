@@ -94,7 +94,6 @@ const deleteNoticeByTime = async (req, res) => {
 
 	} catch (err) {
 		// Send response with error message if something went wrong
-		console.error(err);
 		res.status(500).send(err);
 	}
 

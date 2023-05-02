@@ -20,7 +20,6 @@ const createAbsentTeacher = async (req, res) => {
         // Respond with a success message and the saved data
         res.status(201).json(savedAbsentTeacher);
     } catch (err) {
-        console.error(err);
         res.status(500).json({ message: 'Internal server error' });
     }
 };
@@ -57,7 +56,6 @@ const deleteAbsentTeacherById = async (req, res) => {
         res.json({ message: 'Teacher deleted successfully' });
     } catch (err) {
         // Handle errors
-        console.error(err);
         res.status(500).json({ message: 'Failed to delete teacher' });
     }
 };

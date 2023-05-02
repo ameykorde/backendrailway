@@ -36,7 +36,6 @@ const deleteCalendar = async (req, res) => {
         // Return success message
         return res.status(200).json({ message: 'Calendar deleted successfully' });
     } catch (error) {
-        console.error(error);
         // Return error message
         return res.status(500).json({ message: 'Failed to delete calendar' });
     }
