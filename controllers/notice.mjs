@@ -1,6 +1,7 @@
 // Import required modules
 import Notice from '../model/notice.mjs';
 import moment from 'moment';
+import 'moment-timezone';
 
 // Function to add new notice
 const newNotice = async (req, res) => {

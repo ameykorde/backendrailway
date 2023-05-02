@@ -1,6 +1,7 @@
 // Import necessary modules
 import AbsentTeacher from '../model/absentTeacher.mjs';
 import moment from 'moment';
+import 'moment-timezone';
 
 // Create an absent teacher
 const createAbsentTeacher = async (req, res) => {
