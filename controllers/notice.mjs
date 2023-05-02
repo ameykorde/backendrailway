@@ -44,6 +44,9 @@ const getData = async (req, res) => {
 		// Get current date and time
 		const currentDate = moment().format('YYYY-MM-DD');
 		const currentTime = moment().format('HH:mm')
+		console.log('Current date:', currentDate);
+		console.log('Current time:', currentTime);
+
 
 		// Find notices with filtering conditions
 		const filterNotice = await Notice.find({
