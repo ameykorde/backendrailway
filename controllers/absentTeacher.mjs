@@ -32,10 +32,10 @@ const getAbsentTeacher = async (req, res) => {
 
         // Get the current date and time
         const currentDate = moment().startOf('day');
-        
+
         // Find all absent teachers with a toDate greater than or equal to the current date
         const absentTeachers = await AbsentTeacher.find({ toDate: { $gte: currentDate } }).sort({ fromDate: 1 });
-        
+
         // Respond with the found absent teachers
         res.json(absentTeachers);
     } catch (err) {
@@ -66,19 +66,25 @@ const deleteAbsentTeacherById = async (req, res) => {
 // Delete all absent teachers with a toDate less than the current date
 const deleteAbsentTeacherByDate = async (req, res) => {
     try {
+        moment.tz.setDefault('Asia/Kolkata'); // Setting default timezone to Indian Timezone
+
         // Get the current date and time
         const currentDate = new Date();
+
+        // Set the time to 00:00:00 for the current date so that only date part is considered
+        currentDate.setHours(0, 0, 0, 0);
 
         // Delete all absent teachers with a toDate less than the current date
         await AbsentTeacher.deleteMany({ toDate: { $lt: currentDate } });
 
         // Respond with a success message
-        res.json({ message: `Absent teacher deleted Successfully.` });
+        res.json({ message: `Absent teachers deleted successfully.` });
     } catch (err) {
         // Handle errors
         res.status(500).json({ message: err.message });
     }
 };
+
 
 // Export the functions
 export { createAbsentTeacher, getAbsentTeacher, deleteAbsentTeacherById, deleteAbsentTeacherByDate };
